@@ -1,0 +1,378 @@
+[
+  {
+    "signal_id": "SIG-00001-1792600331",
+    "created_at_utc": "2026-10-21T16:32:11.487135+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4149.4,
+    "model_version": "v1.2.0",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.245,
+      "prob_fall_target": 0.755,
+      "prob_range_compression": 0.489
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Broker minimum 0.01 lot on a 14.4 pt SL risks \u20b91246.46 (62.3% of balance), exceeding your 0.5% limit."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00002-1792600334",
+    "created_at_utc": "2026-10-21T16:32:14.070743+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 2720.0,
+    "model_version": "v1.2.0",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 2.0,
+      "estimated_slippage_pts": 0.2
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.55
+    },
+    "original_evidence": {
+      "why": "Small account risk limit guardrail"
+    },
+    "user_execution": {
+      "recorded_at_utc": "2026-10-21T16:32:14.072833+00:00",
+      "actual_entry": 2720.0,
+      "actual_exit": 2725.0,
+      "outcome": "WIN",
+      "max_adverse_excursion_pts": 0.8,
+      "max_favourable_excursion_pts": 5.2,
+      "rules_strictly_followed": true,
+      "notes": ""
+    },
+    "outcome_logged": true
+  },
+  {
+    "signal_id": "SIG-00003-1792600334",
+    "created_at_utc": "2026-10-21T16:32:14.907044+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4149.3,
+    "model_version": "v1.2.0",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.245,
+      "prob_fall_target": 0.755,
+      "prob_range_compression": 0.491
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Model Calibrated_Logistic_Regression achieved Brier score 0.1662 (MODERATELY_CALIBRATED) on untouched out-of-sample test candles; paper-trading verification active."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00004-1792600335",
+    "created_at_utc": "2026-10-21T16:32:15.750246+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4149.4,
+    "model_version": "v1.2.0",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.245,
+      "prob_fall_target": 0.755,
+      "prob_range_compression": 0.489
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Broker minimum 0.01 lot on a 14.4 pt SL risks \u20b91246.46 (62.3% of balance), exceeding your 0.5% limit."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00005-1792600432",
+    "created_at_utc": "2026-10-21T16:33:52.514353+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4150.0,
+    "model_version": "test-v1",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.392,
+      "prob_fall_target": 0.608,
+      "prob_range_compression": 0.783
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Broker minimum 0.01 lot on a 15.0 pt SL risks \u20b91296.63 (64.8% of balance), exceeding your 0.5% limit."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00006-1792600434",
+    "created_at_utc": "2026-10-21T16:33:54.166008+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 2720.0,
+    "model_version": "v1.2.0",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 2.0,
+      "estimated_slippage_pts": 0.2
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.55
+    },
+    "original_evidence": {
+      "why": "Small account risk limit guardrail"
+    },
+    "user_execution": {
+      "recorded_at_utc": "2026-10-21T16:33:54.168726+00:00",
+      "actual_entry": 2720.0,
+      "actual_exit": 2725.0,
+      "outcome": "WIN",
+      "max_adverse_excursion_pts": 0.8,
+      "max_favourable_excursion_pts": 5.2,
+      "rules_strictly_followed": true,
+      "notes": ""
+    },
+    "outcome_logged": true
+  },
+  {
+    "signal_id": "SIG-00007-1792600434",
+    "created_at_utc": "2026-10-21T16:33:54.972963+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4150.0,
+    "model_version": "test-v1",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.392,
+      "prob_fall_target": 0.608,
+      "prob_range_compression": 0.783
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Model Hist_Gradient_Boosting achieved Brier score 0.1533 (MODERATELY_CALIBRATED) on untouched out-of-sample test candles; paper-trading verification active."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00008-1792600435",
+    "created_at_utc": "2026-10-21T16:33:55.835817+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4150.0,
+    "model_version": "test-v1",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.392,
+      "prob_fall_target": 0.608,
+      "prob_range_compression": 0.783
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Broker minimum 0.01 lot on a 15.0 pt SL risks \u20b91296.63 (64.8% of balance), exceeding your 0.5% limit."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00009-1792601158",
+    "created_at_utc": "2026-10-21T16:45:58.929658+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4147.0,
+    "model_version": "test-v1",
+    "strategy_id": "STRAT-XAU-002",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.62,
+      "prob_fall_target": 0.38,
+      "prob_range_compression": 0.759
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Model Hist_Gradient_Boosting achieved Brier score 0.1533 (MODERATELY_CALIBRATED) on untouched out-of-sample test candles; paper-trading verification active."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00010-1792601170",
+    "created_at_utc": "2026-10-21T16:46:10.600625+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4147.2,
+    "model_version": "test-v1",
+    "strategy_id": "STRAT-XAU-002",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.62,
+      "prob_fall_target": 0.38,
+      "prob_range_compression": 0.759
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Model Hist_Gradient_Boosting achieved Brier score 0.1533 (MODERATELY_CALIBRATED) on untouched out-of-sample test candles; paper-trading verification active."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00011-1792601240",
+    "created_at_utc": "2026-10-21T16:47:20.849700+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4146.5,
+    "model_version": "test-v1",
+    "strategy_id": "STRAT-XAU-002",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.711,
+      "prob_fall_target": 0.289,
+      "prob_range_compression": 0.577
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Model Hist_Gradient_Boosting achieved Brier score 0.1533 (MODERATELY_CALIBRATED) on untouched out-of-sample test candles; paper-trading verification active."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00012-1792601380",
+    "created_at_utc": "2026-10-21T16:49:40.418309+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4149.9,
+    "model_version": "test-v1",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.444,
+      "prob_fall_target": 0.556,
+      "prob_range_compression": 0.888
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "Model Hist_Gradient_Boosting achieved Brier score 0.1533 (MODERATELY_CALIBRATED) on untouched out-of-sample test candles; paper-trading verification active."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  },
+  {
+    "signal_id": "SIG-00013-1792601395",
+    "created_at_utc": "2026-10-21T16:49:55.551967+00:00",
+    "decision": "NO TRADE",
+    "symbol": "XAUUSD",
+    "timeframe": "15m",
+    "market_price": 4155.5,
+    "model_version": "test-v1",
+    "strategy_id": "STRAT-XAU-001",
+    "trade_geometry": {
+      "proposed_entry": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "estimated_spread_pts": 1.8,
+      "estimated_slippage_pts": 0.15
+    },
+    "model_probabilities": {
+      "prob_rise_target": 0.493,
+      "prob_fall_target": 0.507,
+      "prob_range_compression": 0.987
+    },
+    "original_evidence": {
+      "session": "NEW_YORK",
+      "why": "On a \u20b92,000 balance at 0.5% risk, maximum loss permitted is \u20b910.00. Minimum 0.01 lot on a 3.5 pt SL risks \u20b9302.75, exceeding your limit."
+    },
+    "user_execution": null,
+    "outcome_logged": false
+  }
+]

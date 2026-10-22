@@ -1,0 +1,118 @@
+//@version=6
+indicator("GoldMind AI - Market Structure & Signal Alert Engine [v6]", overlay=true, max_labels_count=500, max_lines_count=500)
+
+// ==========================================
+// CONFIGURATION & INPUTS
+// ==========================================
+group_ema = "Trend Alignment (EMAs)"
+emaFastLen = input.int(20, "Fast EMA Length", minval=1, group=group_ema)
+emaMidLen  = input.int(50, "Medium EMA Length", minval=1, group=group_ema)
+emaSlowLen = input.int(200, "Slow EMA Length", minval=1, group=group_ema)
+
+group_rsi = "Momentum (RSI)"
+rsiLen       = input.int(14, "RSI Length", minval=1, group=group_rsi)
+rsiOverbought = input.float(70.0, "RSI Overbought Level", group=group_rsi)
+rsiOversold   = input.float(30.0, "RSI Oversold Level", group=group_rsi)
+
+group_atr = "Volatility (ATR)"
+atrLen = input.int(14, "ATR Length", minval=1, group=group_atr)
+
+group_swing = "Market Structure (Swings & Pivots)"
+pivotLookback = input.int(5, "Swing Pivot Lookback (bars)", minval=2, maxval=20, group=group_swing, 
+                          tooltip="Number of bars before and after to confirm a swing high/low. Only confirmed on bar close (zero repainting).")
+
+group_webhook = "GoldMind AI Webhook Authentication"
+webhookSecret = input.string("gm_secret_default_key", "Webhook Secret / Bearer Token", group=group_webhook, 
+                             tooltip="Must match the TV_WEBHOOK_SECRET set in your GoldMind AI backend environment.")
+
+// ==========================================
+// CALCULATIONS
+// ==========================================
+ema20  = ta.ema(close, emaFastLen)
+ema50  = ta.ema(close, emaMidLen)
+ema200 = ta.ema(close, emaSlowLen)
+
+rsiVal = ta.rsi(close, rsiLen)
+atrVal = ta.atr(atrLen)
+
+// Confirmed Pivot Points (lagged by pivotLookback to strictly prevent repainting)
+ph = ta.pivothigh(high, pivotLookback, pivotLookback)
+pl = ta.pivotlow(low, pivotLookback, pivotLookback)
+
+var float lastSwingHigh = na
+var float lastSwingLow = na
+var float prevSwingHigh = na
+var float prevSwingLow = na
+
+if not na(ph)
+    prevSwingHigh := lastSwingHigh
+    lastSwingHigh := ph
+
+if not na(pl)
+    prevSwingLow := lastSwingLow
+    lastSwingLow := pl
+
+// Trend Alignment condition
+bullishTrend = ema20 > ema50 and ema50 > ema200 and close > ema20
+bearishTrend = ema20 < ema50 and ema50 < ema200 and close < ema20
+
+// Break of Structure (BOS) / Change of Character (CHoCH) checks on bar close
+isBOS_Bull = ta.crossover(close, lastSwingHigh)
+isBOS_Bear = ta.crossunder(close, lastSwingLow)
+
+// Candle patterns
+isBullishEngulfing = close > open and close[1] < open[1] and close >= open[1] and open <= close[1]
+isBearishEngulfing = close < open and close[1] > open[1] and close <= open[1] and open >= close[1]
+
+// Composite Signal Evaluation
+// Condition 1: Bullish Setup Alert
+bullishCondition = bullishTrend and rsiVal > 45 and rsiVal < 68 and (isBOS_Bull or isBullishEngulfing or close > ema20)
+// Condition 2: Bearish Setup Alert
+bearishCondition = bearishTrend and rsiVal < 55 and rsiVal > 32 and (isBOS_Bear or isBearishEngulfing or close < ema20)
+
+// Market Structure label
+marketStructureState = bullishTrend ? "BULLISH_TREND" : bearishTrend ? "BEARISH_TREND" : "CONSOLIDATION"
+
+// ==========================================
+// VISUAL PLOTS
+// ==========================================
+plot(ema20,  "EMA 20",  color=color.new(color.yellow, 20), linewidth=1)
+plot(ema50,  "EMA 50",  color=color.new(color.orange, 10), linewidth=2)
+plot(ema200, "EMA 200", color=color.new(color.purple, 0),  linewidth=2)
+
+// Plot confirmed swing levels
+plot(lastSwingHigh, "Confirmed Swing High", color=color.new(color.red, 40), style=plot.style_circles, linewidth=2)
+plot(lastSwingLow,  "Confirmed Swing Low",  color=color.new(color.green, 40), style=plot.style_circles, linewidth=2)
+
+// Visual markers on confirmed bar close
+plotshape(bullishCondition and barstate.isconfirmed, title="Bullish Setup Trigger", 
+          style=shape.triangleup, location=location.belowbar, color=color.green, size=size.small)
+plotshape(bearishCondition and barstate.isconfirmed, title="Bearish Setup Trigger", 
+          style=shape.triangledown, location=location.abovebar, color=color.red, size=size.small)
+
+// ==========================================
+// STRUCTURED JSON ALERT PAYLOAD (FOR WEBHOOK)
+// ==========================================
+// This payload format is parsed by the GoldMind AI backend at /api/v1/webhooks/tradingview
+alertPayload = '{"secret": "' + webhookSecret + '", ' +
+  '"symbol": "' + syminfo.ticker + '", ' +
+  '"timeframe": "' + timeframe.period + '", ' +
+  '"timestamp": ' + str.tostring(time) + ', ' +
+  '"open": ' + str.tostring(open) + ', ' +
+  '"high": ' + str.tostring(high) + ', ' +
+  '"low": ' + str.tostring(low) + ', ' +
+  '"close": ' + str.tostring(close) + ', ' +
+  '"volume": ' + str.tostring(volume) + ', ' +
+  '"ema20": ' + str.tostring(ema20) + ', ' +
+  '"ema50": ' + str.tostring(ema50) + ', ' +
+  '"ema200": ' + str.tostring(ema200) + ', ' +
+  '"rsi": ' + str.tostring(rsiVal) + ', ' +
+  '"atr": ' + str.tostring(atrVal) + ', ' +
+  '"swing_high": ' + str.tostring(lastSwingHigh) + ', ' +
+  '"swing_low": ' + str.tostring(lastSwingLow) + ', ' +
+  '"structure": "' + marketStructureState + '", ' +
+  '"condition": "' + (bullishCondition ? "BULLISH_SIGNAL" : bearishCondition ? "BEARISH_SIGNAL" : "MARKET_UPDATE") + '"}'
+
+// Trigger alert on confirmed candle close only
+if (bullishCondition or bearishCondition) and barstate.isconfirmed
+    alert(alertPayload, alert.freq_once_per_bar_close)

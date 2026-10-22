@@ -1,0 +1,45 @@
+{
+  "name": "GoldMind AI — Advanced XAUUSD Intelligence",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "forwardPorts": [3000, 8001],
+  "portsAttributes": {
+    "3000": {
+      "label": "GoldMind AI Frontend (Next.js)",
+      "onAutoForward": "openBrowser",
+      "protocol": "http"
+    },
+    "8001": {
+      "label": "FastAPI Backend & ML Prediction Engine",
+      "onAutoForward": "silent",
+      "protocol": "http"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/backend/venv/bin/python",
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": [
+          "backend/tests"
+        ],
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "remoteUser": "vscode"
+}

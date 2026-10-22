@@ -1,0 +1,56 @@
+# ==========================================
+# Python & Virtual Environments
+# ==========================================
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+*.sqlite3
+backend/goldmind.db
+goldmind.db
+
+# ==========================================
+# Node & Next.js
+# ==========================================
+frontend/node_modules/
+node_modules/
+frontend/.next/
+.next/
+frontend/out/
+out/
+build/
+frontend/build/
+*.tsbuildinfo
+.npm
+frontend/npm-debug.log*
+npm-debug.log*
+
+# ==========================================
+# Environment Variables & Secrets
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+
+# ==========================================
+# Logs & System Files
+# ==========================================
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
